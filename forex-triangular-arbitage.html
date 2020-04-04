@@ -1,8 +1,7 @@
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	
-<!-- Mirrored from colorlib.com/preview/theme/resume/generic.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 01 Apr 2019 13:11:18 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +16,7 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>YBC</title>
+		<title>Forex Triangular Arbitrage</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -30,6 +29,7 @@
 			<link rel="stylesheet" href="css/magnific-popup.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
 			<link rel="stylesheet" href="css/main.css">
+			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		</head>
 		<body>
 		<!-- Start banner Area -->
@@ -48,7 +48,7 @@
 							  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
 							    <ul class="navbar-nav">
 									<li><a href="index.html#home">Home</a></li>
-									<li><a href="index.html#stack">Service</a></li>
+									<li><a href="index.html#stack">Knowledge Stack</a></li>
 									<li><a href="index.html#about">About</a></li>
 									<li><a href="index.html#project">Projects</a></li>
 									<li><a href="index.html#contact">Contact</a></li>
@@ -80,128 +80,56 @@
 				<div class="row height align-items-center justify-content-center">
 					<div class="col-lg-10">
 						<div class="generic-banner-content">
-							<h2 class="text-white">Your Beach Castle</h2>
-							<p class="text-white">Your Beach Castle is a beachwear store, which helps you to build your own castle of beachwears.<br>We at YBC provide you with the best in class beachwear products.<br>As our using the dropshipping business model we are able to provide you the best products, handpicked by our fashion &amp; design team.</p>
-						</div>							
+							<h2 class="text-white">Forex Triangular Arbitrage</h2>
+							<p class="text-white">The Tool helps you find if there is any Triangular Arbitrage that exists for your particular currency conversion. Being a Forex Trader or a user getting the currency converted, it'll help you save certain bucks by identifying the anamolies in Forex values! </p>
+							<br><hr>
+							<label for="curr_1" >Input Currency:<select class="align-items-center justify-content-center" id="curr_1"><option value="CAD">CAD</option><option value="HKD">HKD</option><option value="ISK">ISK</option><option value="PHP">PHP</option><option value="DKK">DKK</option><option value="HUF">HUF</option><option value="CZK">CZK</option><option value="GBP">GBP</option><option value="RON">RON</option><option value="SEK">SEK</option><option value="IDR">IDR</option><option value="INR">INR</option><option value="BRL">BRL</option><option value="RUB">RUB</option><option value="HRK">HRK</option><option value="JPY">JPY</option><option value="THB">THB</option><option value="CHF">CHF</option><option value="EUR">EUR</option><option value="MYR">MYR</option><option value="BGN">BGN</option><option value="TRY">TRY</option><option value="CNY">CNY</option><option value="NOK">NOK</option><option value="NZD">NZD</option><option value="ZAR">ZAR</option><option value="USD">USD</option><option value="MXN">MXN</option><option value="SGD">SGD</option><option value="AUD">AUD</option><option value="ILS">ILS</option><option value="KRW">KRW</option><option value="PLN">PLN</option></select></label>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<label for="curr_2" >Output Currency:<select class="align-items-center justify-content-center" id="curr_2"><option value="CAD">CAD</option><option value="HKD">HKD</option><option value="ISK">ISK</option><option value="PHP">PHP</option><option value="DKK">DKK</option><option value="HUF">HUF</option><option value="CZK">CZK</option><option value="GBP">GBP</option><option value="RON">RON</option><option value="SEK">SEK</option><option value="IDR">IDR</option><option value="INR">INR</option><option value="BRL">BRL</option><option value="RUB">RUB</option><option value="HRK">HRK</option><option value="JPY">JPY</option><option value="THB">THB</option><option value="CHF">CHF</option><option value="EUR">EUR</option><option value="MYR">MYR</option><option value="BGN">BGN</option><option value="TRY">TRY</option><option value="CNY">CNY</option><option value="NOK">NOK</option><option value="NZD">NZD</option><option value="ZAR">ZAR</option><option value="USD">USD</option><option value="MXN">MXN</option><option value="SGD">SGD</option><option value="AUD">AUD</option><option value="ILS">ILS</option><option value="KRW">KRW</option><option value="PLN">PLN</option></select></label>
+							<br><br><button class="w3-button w3-round-xlarge w3-blue w3-hover-indigo" onclick="forex_ta()">Find Forex TA</button>
+							<p class="align-items-center justify-content-center" id="dcr"></p>
+						</div>	
+						<script>
+						function forex_ta(){
+						var curr_A = document.getElementById("curr_1").value;
+						var curr_B = "";
+						var curr_C = document.getElementById("curr_2").value;
+						var response = "";
+						var req = new XMLHttpRequest();
+						req.open('GET', 'https://api.exchangeratesapi.io/latest?base='+curr_A, false);
+						req.send(null);
+						var obj = JSON.parse(req.responseText);
+						org = obj.rates[curr_C];
+						min = obj.rates[curr_C];
+						response += "<br>Direct Conversion Rate: " + min + "<br>";
+						for (var curr in obj.rates){
+							var num_1 = obj.rates[curr];
+							var local_req = new XMLHttpRequest();
+							local_req.open('GET', 'https://api.exchangeratesapi.io/latest?base='+curr, false);
+							local_req.send(null);
+							var local_obj = JSON.parse(local_req.responseText);
+  						    var num_2 = local_obj.rates[curr_C];
+  						 	if ( num_1*num_2 < min ) {
+  						  	min = num_1*num_2;
+  						    curr_B = curr;
+   						    }
+						}
+						if (curr_B === "") {
+							response += "No Arbitrage Found";
+							}
+						else {
+							var disc_value = ((org-min)/org)*100 ;
+							response += "<b>Triangular Arbitrage Found</b><br><hr>" + "Intermediate Currency: " + curr_B + "<br>Discounted Value: " + min + "<br>Discount %: " + disc_value;
+							}
+						document.getElementById("dcr").innerHTML = response;
+						}
+						</script>
 					</div>
 				</div>
 			</div>
+			
 		</section>		
 		<!-- End banner Area -->
-		
-		<!-- About Generic Start -->
-		<div class="main-wrapper">
-			
-			<!-- Start feature Area -->
-			<section class="feature-area pt-100">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Features that Made us Unique</h1>
-								<p>Our customers are in extreme love with our services &amp; system.</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-user"></span>
-									<h4><a href="#">Expert Support</a></h4>
-								</div>
-								<p>
-									We at YBC made sure that we always provide the best support, decreasing the response time while increasing the number of happy customers.
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-license"></span>
-									<h4><a href="#">Professional Service</a></h4>
-								</div>
-								<p>
-									At YBC, we made sure that the customers would not face any end-moment revisions whether it be the price or the delivery time.
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-gift"></span>
-									<h4><a href="#">Lowest Price</a></h4>
-								</div>
-								<p>
-									The reason for our popularity was our best in class products offered at the lowest price possible, thus abetting customers to make the purchases.
-								</p>							
-							</div>							
-						</div>																					
-					</div>
-				</div>	
-			</section>
-			<!-- End feature Area -->			
-			
-			<!-- Start service Area -->
-			<section class="service-area section-gap" id="service"> 
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Have a Look at our Services</h1>
-								<p>Providing the trendiest beachwear that is avaible out there.</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="single-service col-lg-6 col-md-6 mb-30">
-							<div class="icon">
-								<img src="img/s7.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Swimwear for Kids</a></h4>			
-								<p class="mt-20">
-								We offer a great collection of swimwear for kids, wherein we had products specially designed for the young ones.
-								</p>								
-							</div>
-						</div>
-						<div class="single-service col-lg-6 col-md-6 mb-30">
-							<div class="icon">
-								<img src="img/s8.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Couple Beachwear</a></h4>			
-								<p class="mt-20">
-								The hottest selling products, the couple collection was designed specifically for couples who wanted to pair up there beachwears. 
-								</p>								
-							</div>
-						</div>
-						<div class="single-service col-lg-6 col-md-6">
-							<div class="icon">
-								<img src="img/s9.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Coverups</a></h4>			
-								<p class="mt-20">
-								As Coverups gets more in trend, our team decided to put that on sale and boom goes the dynamite, the trend sold quickly.
-								</p>								
-							</div>
-						</div>
-						<div class="single-service col-lg-6 col-md-6">
-							<div class="icon">
-								<img src="img/s10.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Eyewear</a></h4>			
-								<p class="mt-20">
-								We offered a number of eyewear to complete your beach castle, so when you think of beachwear next time, you think of Your Beach Castle.
-								</p>								
-							</div>
-						</div>																		
-					</div>
-				</div>	
-			</section>
-			<!-- End service Area -->
 
 
 			<!-- start footer Area -->		

@@ -1,5 +1,5 @@
-	<!DOCTYPE html>
-	<html lang="zxx" class="no-js">
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
 	
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
@@ -16,7 +16,7 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>Banjara Voyage</title>
+		<title>Optimal Asset Allocation</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
@@ -29,6 +29,7 @@
 			<link rel="stylesheet" href="css/magnific-popup.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
 			<link rel="stylesheet" href="css/main.css">
+			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
 		</head>
 		<body>
 		<!-- Start banner Area -->
@@ -60,7 +61,7 @@
 								        <a class="dropdown-item" href="banjara_voyage.html">Banjara Voyage</a>
 								        <a class="dropdown-item" href="your_beach_castle.html">Your Beach Castle</a>
 								      </div>
-								    </li>
+								    </li>	
 									<li class="dropdown">
 								      <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 								        Finance Projects
@@ -80,128 +81,100 @@
 				<div class="row height align-items-center justify-content-center">
 					<div class="col-lg-10">
 						<div class="generic-banner-content">
-							<h2 class="text-white">Banjara Voyage</h2>
-							<p class="text-white">Banjara Voyage is a travel based startup where we organized trips, created Itineraries, provided Travel Guidance & Trekking support to people who are willing to do these activities but are running pretty low on budget. </p>
-						</div>							
+							<h2 class="text-white">Optimal Asset Allocation</h2>
+							<p class="text-white">The Tool helps you calculate the optimal asset allocation for your investments portfolio which is vested in two derivatives and the risk free asset.</p>
+							<br><hr>
+							<TABLE BORDER="1" class="align-items-center justify-content-center">
+							<TR>
+								<TD></TD>
+								<TD>Investment A</TD>
+								<TD>Investment B</TD>
+							</TR>
+							<TR>
+								<TD width="180">Annual Return(in %)</TD>
+								<TD>
+									<INPUT TYPE="number" id="ret_A" SIZE="20">
+								</TD>
+								<TD>
+									<INPUT TYPE="number" id="ret_B" SIZE="20">
+								</TD>
+							</TR>
+							<TR>
+								<TD width="180">Annual Volatility(in %)</TD>
+								<TD>
+									<INPUT TYPE="number" id="vol_A" SIZE="20">
+								</TD>
+								<TD>
+									<INPUT TYPE="number" id="vol_B" SIZE="20">
+								</TD>
+							</TR>
+							</TABLE>
+							<HR>
+							NOTE: Enter the value for either Correlation or Covariance. Do not enter both the values!
+							<TABLE BORDER="1">
+							<TR>
+								<TD width="180">Correlation</TD>
+								<TD>
+									<INPUT TYPE="number" id="corr" SIZE="20">
+								</TD>
+							</TR>
+							<TR>
+								<TD width="180">Covariance</TD>
+								<TD>
+									<INPUT TYPE="number" id="covar" SIZE="20">
+								</TD>
+							</TR>
+							<TR>
+								<TD width="180">Risk-free Return(in %)</TD>
+								<TD>
+									<INPUT TYPE="number" id="rfr" SIZE="20">
+								</TD>
+							</TR>
+							<TR>
+								<TD width="180">Risk Aversion</TD>
+								<TD>
+									<INPUT TYPE="number" id="ra" SIZE="20">
+								</TD>
+							</TR>
+							</TABLE>
+							<p class="align-items-center justify-content-center" id="dcr"></p>
+							<button class="w3-button w3-round-xlarge w3-blue w3-hover-indigo" onclick="opa_calc()">Find Optimal Values</button>
+						</div>	
+						<script>
+						function opa_calc(){
+						var ret_A = (document.getElementById("ret_A").value)/100;
+						var ret_B = (document.getElementById("ret_B").value)/100;
+						var vol_A = (document.getElementById("vol_A").value)/100;
+						var vol_B = (document.getElementById("vol_B").value)/100;
+						var variance_A = vol_A*vol_A
+						var variance_B = vol_B*vol_B
+						var covar = document.getElementById("covar").value;
+						var corr = document.getElementById("corr").value;
+						var rfr = (document.getElementById("rfr").value)/100;
+						var ra = document.getElementById("ra").value;
+						var response = "";
+						
+						if (covar.length <= 0) {
+							covar = corr*(Math.sqrt(variance_A*variance_B))
+							}
+						else {
+							corr = covar/(Math.sqrt(variance_A*variance_B))
+							}
+						
+						var allocation_A = (((variance_B*(ret_A-rfr))-(covar*(ret_B-rfr)))/(ra*variance_A*variance_B*(1-(corr*corr)))).toFixed(3)
+						var allocation_B = (((variance_A*(ret_B-rfr))-(covar*(ret_A-rfr)))/(ra*variance_A*variance_B*(1-(corr*corr)))).toFixed(3)
+						var allocation_RF = 1 - (allocation_A + allocation_B)
+						
+						response = "<b><br>Optimal Asset Allocation is as follows:</b><br>" + "Investment A: " + allocation_A + "\t Investment B: " + allocation_B + "\t Risk-Free Allocation: " + allocation_RF;
+						document.getElementById("dcr").innerHTML = response;
+						}
+						</script>	
 					</div>
 				</div>
 			</div>
+			
 		</section>		
 		<!-- End banner Area -->
-		
-		<!-- About Generic Start -->
-		<div class="main-wrapper">
-			
-			<!-- Start feature Area -->
-			<section class="feature-area pt-100">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Features that Made us Unique</h1>
-								<p>Our customers are in extreme love with our services &amp; system.</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-user"></span>
-									<h4><a href="#">Expert On-Site Support</a></h4>
-								</div>
-								<p>
-									We at Banjara Voyage made sure that we always have on-site support available thus providing the best in class support. Always prepared for all eventualities.
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-license"></span>
-									<h4><a href="#">Professional Service</a></h4>
-								</div>
-								<p>
-									We at Banjara Voyage made sure that the customers would not face any end-moment revisions whether it be the price or the itinerary.
-								</p>							
-							</div>							
-						</div>
-						<div class="col-lg-4 col-md-6 ">
-							<div class="single-feature mb-30">
-								<div class="title d-flex flex-row pb-20">
-									<span class="lnr lnr-gift"></span>
-									<h4><a href="#">Lowest Price</a></h4>
-								</div>
-								<p>
-									The reason for our popularity among college students was our low budget trips which abetted students to make the bookings from Banjara Voyage.
-								</p>							
-							</div>							
-						</div>																					
-					</div>
-				</div>	
-			</section>
-			<!-- End feature Area -->			
-			
-			<!-- Start service Area -->
-			<section class="service-area section-gap" id="service"> 
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-70 col-lg-8">
-							<div class="title text-center">
-								<h1 class="mb-10">Have a Look at our Services</h1>
-								<p>Providing trips that are worth for pockets that are running low on budget.</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="single-service col-lg-6 col-md-6 mb-30">
-							<div class="icon">
-								<img src="img/s1.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Vacation Packages</a></h4>			
-								<p class="mt-20">
-									We provide the best packages for low budget trips. We help you cover most of the places in the least amount possible and with the best services. We made sure that you don't have worry about your tickets etc. 
-								</p>								
-							</div>
-						</div>
-						<div class="single-service col-lg-6 col-md-6 mb-30">
-							<div class="icon">
-								<img src="img/s2.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Free Itineraries</a></h4>			
-								<p class="mt-20">
-									We love to see people travel, thus we always provided Itineraries for free because we want you to explore the most that is out there.
-								</p>								
-							</div>
-						</div>
-						<div class="single-service col-lg-6 col-md-6">
-							<div class="icon">
-								<img src="img/s4.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Camps Rental</a></h4>			
-								<p class="mt-20">
-									At Banjara Travels we provide you with the best in class camps to make your adventurous trip a little more comforting. Along with camps we provide sleeping bags, mats and other accessories. 
-								</p>								
-							</div>
-						</div>
-						<div class="single-service col-lg-6 col-md-6">
-							<div class="icon">
-								<img src="img/s6.png" alt="">
-							</div>
-							<div class="dec">
-								<h4 class="mt-30"><a href="#">Adventure Sports</a></h4>			
-								<p class="mt-20">
-									This era is missing adventure sports from their lives, so we at Banjara Voyage made sure that we provide our customers with best in class adrenaline rush in the lowest budget possible. 
-								</p>								
-							</div>
-						</div>																		
-					</div>
-				</div>	
-			</section>
-			<!-- End service Area -->
 
 
 			<!-- start footer Area -->		

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
-	
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Favicon-->
-		<link rel="shortcut icon" href="img/elements/fav.html">
+		<link rel="shortcut icon" href="img/fav.html">
 		<!-- Author Meta -->
-		<meta name="author" content="CodePixar">
+		<meta name="author" content="colorlib">
 		<!-- Meta Description -->
 		<meta name="description" content="">
 		<!-- Meta Keyword -->
@@ -18,7 +16,7 @@
 		<!-- Site Title -->
 		<title>Optimal Asset Allocation</title>
 
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 			<!--
 			CSS
 			============================================= -->
@@ -29,7 +27,6 @@
 			<link rel="stylesheet" href="css/magnific-popup.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
 			<link rel="stylesheet" href="css/main.css">
-			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
 		</head>
 		<body>
 		<!-- Start banner Area -->
@@ -77,11 +74,11 @@
 			<div class="container">
 				<div class="row height align-items-center justify-content-center">
 					<div class="col-lg-10">
-						<div class="generic-banner-content">
+						<div class="generic-banner-content"><br><br>
 							<h2 class="text-white">Optimal Asset Allocation</h2>
 							<p class="text-white">The Tool helps you calculate the optimal asset allocation for your investments portfolio which is vested in two derivatives and the risk free asset.</p>
-							<br><hr>
-							<TABLE BORDER="1" class="align-items-center justify-content-center">
+							<hr>
+							<TABLE BORDER="1" class="text-white align-items-center justify-content-center">
 							<TR>
 								<TD></TD>
 								<TD>Investment A</TD>
@@ -107,35 +104,33 @@
 							</TR>
 							</TABLE>
 							<HR>
-							NOTE: Enter the value for either Correlation or Covariance. Do not enter both the values!
-							<TABLE BORDER="1">
+							<p class="text-white"><b><u>NOTE</u></b>: Enter the value for either Correlation or Covariance. Do not enter both the values!</p>
+							<TABLE BORDER="1" class="text-white">
 							<TR>
-								<TD width="180">Correlation</TD>
+								<TD></TD>
+								<TD>Correlation</TD>
+								<TD>Covariance</TD>
+								<TD>Risk-free Return(in %)</TD>
+								<TD>Risk Aversion</TD>
+							</TR>
+							<TR>
+								<TD></TD>
 								<TD>
 									<INPUT TYPE="number" id="corr" SIZE="20">
 								</TD>
-							</TR>
-							<TR>
-								<TD width="180">Covariance</TD>
 								<TD>
 									<INPUT TYPE="number" id="covar" SIZE="20">
 								</TD>
-							</TR>
-							<TR>
-								<TD width="180">Risk-free Return(in %)</TD>
 								<TD>
 									<INPUT TYPE="number" id="rfr" SIZE="20">
 								</TD>
-							</TR>
-							<TR>
-								<TD width="180">Risk Aversion</TD>
 								<TD>
 									<INPUT TYPE="number" id="ra" SIZE="20">
 								</TD>
 							</TR>
 							</TABLE>
 							<p class="align-items-center justify-content-center" id="dcr"></p>
-							<button class="w3-button w3-round-xlarge w3-blue w3-hover-indigo" onclick="opa_calc()">Find Optimal Values</button>
+							<button class="text-white btn btn-outline-dark" onclick="opa_calc()">Find Optimal Values</button>
 						</div>	
 						<script>
 						function opa_calc(){
@@ -162,7 +157,7 @@
 						var allocation_B = (((variance_A*(ret_B-rfr))-(covar*(ret_A-rfr)))/(ra*variance_A*variance_B*(1-(corr*corr)))).toFixed(3)
 						var allocation_RF = 1 - (allocation_A + allocation_B)
 						
-						response = "<b><br>Optimal Asset Allocation is as follows:</b><br>" + "Investment A: " + allocation_A + "\t Investment B: " + allocation_B + "\t Risk-Free Allocation: " + allocation_RF;
+						response = "<b class='text-white'><br><i><u>Optimal Asset Allocation:</b></u></i>" + "<hr><i class='text-white'>Investment A: " + allocation_A + "<br><i class='text-white'>\t Investment B: " + allocation_B + "<br><i class='text-white'>\t Risk-Free Allocation: " + allocation_RF + "</p>" ;
 						document.getElementById("dcr").innerHTML = response;
 						}
 						</script>	
